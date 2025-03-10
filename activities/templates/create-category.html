@@ -1,0 +1,52 @@
+{% extends "nav.html" %}
+
+{% block title %}
+  Event List
+{% endblock title %}
+
+{% block events %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans p-6">
+    <!-- Display Messages -->
+    {% if messages %} {% for message in messages %}
+    <div
+      class="px-4 py-2 mb-4 rounded text-white {% if 'success' in message.tags %}bg-green-500{% elif 'error' in message.tags %}bg-red-500{% endif %}"
+    >
+      {{ message }}
+    </div>
+    {% endfor %} {% endif %}
+
+    <div
+      class="max-w-md mx-auto bg-white p-6 border border-gray-200 rounded-lg shadow-md"
+    >
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Create Category
+      </h2>
+
+
+      <form method="POST" class="space-y-4">
+        {% csrf_token %}
+
+    
+        <div class="space-y-2">{{ category_form.as_p }}</div>
+
+        
+        <button
+          type="submit"
+          class="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock events %}

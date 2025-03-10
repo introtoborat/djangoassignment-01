@@ -1,0 +1,51 @@
+{% extends "dashboard.html" %}
+{% block title %}Dashboard{% endblock title %}
+{% block events %}
+<!-- Task Table  -->
+<div class="bg-white rounded-xl shadow-sm">
+    <div
+      class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500"
+    >
+      <div>Event Name</div>
+      <div>Catagory</div>
+      <div>Total Participants</div>
+      <div>Created at</div>
+    </div>
+
+    <div class="divide-y divide-gray-100">
+  
+{% for event in events  %} 
+
+<div class="grid grid-cols-4 gap-4 p-4 items-center">
+  <div class="flex items-center gap-2">
+    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+    <span>{{event.name}}</span>
+  </div>
+  <div>
+    <span
+      class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm"
+      >{{event.category}}</span>
+  </div>
+
+  <div>
+    <span
+      class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm"
+      >{{event.participants.count}}</span>
+  </div>
+  {% comment %} <div class="flex -space-x-2">
+    {% for emp in task.assigned_to.all %}
+    <div
+      class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white"
+    >
+      {{emp.name|slice:":1"}}
+    </div>
+    {% endfor %}
+  </div> {% endcomment %}
+  <div class="text-gray-500">{{event.date}}</div>
+</div>
+{% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock events %}

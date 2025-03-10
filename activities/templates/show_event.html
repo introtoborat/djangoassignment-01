@@ -1,0 +1,40 @@
+{% extends "nav.html" %}
+
+{% block title %}
+  Event List
+{% endblock title %}
+
+{% block events %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Tasks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 py-10">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">
+        All Categories
+      </h2>
+
+      <!-- Category List -->
+      <ul class="space-y-4">
+        {% for category in categories %}
+        <li
+          class="p-4 bg-blue-50 border-2 border-blue-50 rounded-md shadow-sm hover:bg-blue-100 transition-all duration-300"
+        >
+          <span class="text-xl text-gray-700 font-medium"
+            >{{ category.name }}</span
+          >
+        </li>
+        {% empty %}
+        <li class="text-center text-gray-500 py-4">No categories available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
+{% endblock events %}
