@@ -14,6 +14,7 @@ urlpatterns = [
   path('create-participant/', create_participant,name="create-participant"),
   path('event_list/',event_list,name="event_list"),
   path('event/<int:event_id>/', event_detail, name='event_detail'),
+  # path('event_register/<int:event_id>/', event_register, name='event_register'),
   path('dashboard-event-list/', dashboard_event_list, name='dashboard-event-list'),
   path('search/', search, name='search'),
   

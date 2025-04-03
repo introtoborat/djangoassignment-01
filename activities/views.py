@@ -38,6 +38,9 @@ def event_detail(request,event_id):
 # def dashboard(request):    
 #     return render(request,'dashboard.html')
 
+def event_register(request,event_id):
+    pass
+
 
 def create_event(request):
     category_form = CategoryModelForm()
@@ -83,17 +86,11 @@ def create_participant(request):
         if participant_form.is_valid():
             par = participant_form.save(commit=False)
             par.save() 
-
-            event_id = request.POST.get("event")  
             
-            if event_id:
-                event_instance = EventModel.objects.get(id=event_id) 
-                par.event.add(event_instance)  
-                
-                messages.success(request, "Participant Created Successfully")
-                return redirect("create-participant")  
-            else: 
-                messages.error(request, "Selected event does not exist.")
+            messages.success(request, "Participant Created Successfully")
+            return redirect("create-participant")  
+        else: 
+            messages.error(request, "Selected event does not exist.")
     else:
         participant_form = ParticipantsModelForm()
 

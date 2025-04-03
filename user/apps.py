@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class ActivitiesConfig(AppConfig):
+class UserConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'activities'
+    name = 'user'
 
     def ready(self):
-        import activities.signals
+        import user.signal
